@@ -1,3 +1,6 @@
+import Language.Haskell.TH (safe)
+import Data.Char
+import Data.IntMap (member)
 
 
 
@@ -43,7 +46,32 @@ karpsravor (x:xs) = x : karpsravor xs -- för saker som är vokaler :)
 
 
 
+--Dela upp orden, en funktion
 
+
+
+splitter "" = []
+splitter (x:xs)
+    | isAlpha x = [x] : splitter xs
+    | otherwise = [] : splitter xs
+
+
+
+
+samman :: [Char] -> [a]
+samman [] = []
+samman list 
+    | isAlpha x = samman(added)
+    | otherwise = samman (tail list)
+    where 
+        x = head list
+        added = x:(head list) : tail list
+
+
+-- hi me -> h : -> i: -> [" "]: -> m: -> e: -> [] 
+
+--räkna hur många bokstäver per ord
+--räkna hur många ord
 
 
 
